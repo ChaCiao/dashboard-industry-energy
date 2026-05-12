@@ -9,20 +9,21 @@
 
 // ============================================
 // 1) Country metadata (DE/FR now independent)
+// shortName: concise label for compact UI (heatmap, mode 2 selector)
 // ============================================
 
 export const COUNTRIES: CountryInfo[] = [
-  { code: "KR", name: "Korea", flag: "KR" },
-  { code: "US", name: "United States", flag: "US" },
-  { code: "EU", name: "European Union", flag: "EU" },
-  { code: "DE", name: "Germany", flag: "DE" },
-  { code: "FR", name: "France", flag: "FR" },
-  { code: "UK", name: "United Kingdom", flag: "UK" },
-  { code: "JP", name: "Japan", flag: "JP" },
-  { code: "AU", name: "Australia", flag: "AU" },
-  { code: "CA", name: "Canada", flag: "CA" },
-  { code: "SA", name: "Saudi Arabia", flag: "SA" },
-  { code: "CN", name: "China", flag: "CN" },
+  { code: "KR", name: "Korea", shortName: "Korea", flag: "KR" },
+  { code: "US", name: "United States", shortName: "U.S.", flag: "US" },
+  { code: "EU", name: "European Union", shortName: "EU", flag: "EU" },
+  { code: "DE", name: "Germany", shortName: "Germany", flag: "DE" },
+  { code: "FR", name: "France", shortName: "France", flag: "FR" },
+  { code: "UK", name: "United Kingdom", shortName: "U.K.", flag: "UK" },
+  { code: "JP", name: "Japan", shortName: "Japan", flag: "JP" },
+  { code: "AU", name: "Australia", shortName: "Australia", flag: "AU" },
+  { code: "CA", name: "Canada", shortName: "Canada", flag: "CA" },
+  { code: "SA", name: "Saudi Arabia", shortName: "Saudi Arabia", flag: "SA" },
+  { code: "CN", name: "China", shortName: "China", flag: "CN" },
 ];
 
 // ============================================
@@ -763,8 +764,6 @@ export const POLICIES: Policy[] = [
 
 // ============================================
 // 5) Country-level aggregated attractiveness (11 countries)
-// DE/FR scores reflect EU policies + own national policies (stackable bonus)
-// All scores reflect Hydrogen Law / Roadmap weighting on stability dimension
 // ============================================
 
 export const COUNTRY_ATTRACTIVENESS: CountryAttractiveness[] = [

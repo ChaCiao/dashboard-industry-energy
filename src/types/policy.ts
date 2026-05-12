@@ -101,9 +101,13 @@ export type Policy = {
   reutersQuery?: string;
 };
 
+// Country metadata.
+// shortName: concise label for compact UI (heatmap rows, mode 2 selector, etc.)
+// Example: "United States" -> "U.S.", "Saudi Arabia" -> "Saudi Arabia"
 export type CountryInfo = {
   code: CountryCode;
   name: string;
+  shortName: string;
   flag: string;
   parentCode?: CountryCode;
   isSubRegion?: boolean;
@@ -123,4 +127,83 @@ export type ScoringDimensionMeta = {
   fullLabel: string;
   definition: string;
   scaleDescription: string[];
+};
+
+// ============================================
+// Mode 2 (S-P7) — types for deep-dive sections
+// ============================================
+
+// Policy history event — country-level policy evolution over time.
+// Distinct from PolicyMilestone (per-policy) — represents national-level shifts.
+export type PolicyHistoryEventType =
+  | "law"
+  | "strategy"
+  | "roadmap"
+  | "amendment"
+  | "auction"
+  | "target-revision"
+  | "international-agreement"
+  | "regulatory";
+
+export type PolicyHistoryEvent = {
+  country: CountryCode;
+  year: number;
+  month?: number;
+  type: PolicyHistoryEventType;
+  title: string;
+  description: string;
+  sourceUrl?: string;
+  impact?: "high" | "medium" | "low";
+};
+
+// News & event feed entry.
+export type NewsEvent = {
+  country: CountryCode;
+  date: string; // ISO format YYYY-MM-DD
+  title: string;
+  summary: string;
+  sourceName: string;
+  sourceUrl: string;
+  category: "policy" | "project" | "market" | "industry" | "international";
+};
+
+// Country player & project mapping.
+export type ValueChainSegment =
+  | "production-green"
+  | "production-blue"
+  | "production-other"
+  | "electrolyzer"
+  | "infrastructure"
+  | "carrier"
+  | "fcev-mobility"
+  | "fuel-cell"
+  | "industrial-utilization"
+  | "ccus"
+  | "integrated";
+
+export type CountryProject = {
+  country: CountryCode;
+  projectName: string;
+  developer: string;
+  segment: ValueChainSegment;
+  scaleNote?: string; // e.g. "600 t/day", "100 MW electrolyzer"
+  targetYear?: number;
+  status?: "operating" | "construction" | "FID" | "announced" | "feasibility";
+  sourceUrl?: string;
+};
+
+export type CountryPlayer = {
+  country: CountryCode;
+  companyName: string;
+  segment: ValueChainSegment;
+  positionNote: string; // 1-2 sentence positioning summary
+  isDomestic?: boolean;
+  sourceUrl?: string;
+};
+
+// Aggregated container for a single country's mapping section.
+export type CountryPlayers = {
+  country: CountryCode;
+  players: CountryPlayer[];
+  projects: CountryProject[];
 };

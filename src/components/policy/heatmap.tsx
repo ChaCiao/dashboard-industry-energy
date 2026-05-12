@@ -53,7 +53,7 @@ export function Heatmap({
           r.policy.scores.scope +
           r.policy.scores.access +
           r.policy.scores.stack;
-        return { code: r.country.code, flag: r.country.flag, total };
+        return { code: r.country.code, shortName: r.country.shortName, total };
       })
       .sort((a, b) => b.total - a.total);
   }, [rows]);
@@ -97,7 +97,7 @@ export function Heatmap({
 
       <div className="grid gap-6 lg:grid-cols-2">
         <div>
-          <div className="grid grid-cols-[60px_repeat(5,1fr)] gap-1.5">
+          <div className="grid grid-cols-[90px_repeat(5,1fr)] gap-1.5">
             <span />
             {SCORING_DIMENSIONS.map((d) => (
               <button
@@ -132,10 +132,10 @@ export function Heatmap({
                   key={row.country.code}
                   type="button"
                   onClick={() => onSelectCountry(row.country.code)}
-                  className={"grid w-full grid-cols-[60px_repeat(5,1fr)] items-center gap-1.5 rounded-sm py-0.5 text-left transition-colors " + (isSelected ? "bg-muted ring-1 ring-foreground/20" : "hover:bg-muted/40")}
+                  className={"grid w-full grid-cols-[90px_repeat(5,1fr)] items-center gap-1.5 rounded-sm py-0.5 text-left transition-colors " + (isSelected ? "bg-muted ring-1 ring-foreground/20" : "hover:bg-muted/40")}
                 >
-                  <span className="text-[10px] font-medium">
-                    {row.country.flag} {row.country.code}
+                  <span className="truncate text-[10px] font-medium" title={row.country.shortName}>
+                    {row.country.shortName}
                   </span>
                   {SCORING_DIMENSIONS.map((d) => {
                     const score = row.policy.scores[d.key];
@@ -206,10 +206,10 @@ export function Heatmap({
                   key={c.code}
                   type="button"
                   onClick={() => onSelectCountry(c.code as CountryCode)}
-                  className={"grid w-full grid-cols-[60px_1fr_40px] items-center gap-2 rounded-sm py-0.5 text-left transition-colors " + (isSelected ? "bg-muted ring-1 ring-foreground/20" : "hover:bg-muted/40")}
+                  className={"grid w-full grid-cols-[90px_1fr_40px] items-center gap-2 rounded-sm py-0.5 text-left transition-colors " + (isSelected ? "bg-muted ring-1 ring-foreground/20" : "hover:bg-muted/40")}
                 >
-                  <span className="text-[10px]">
-                    {c.flag} {c.code}
+                  <span className="truncate text-[10px]" title={c.shortName}>
+                    {c.shortName}
                   </span>
                   <div className="h-3 rounded-sm bg-muted">
                     <div

@@ -9,6 +9,7 @@ import { Heatmap } from "@/components/policy/heatmap";
 import { ComparisonMatrix } from "@/components/policy/comparison-matrix";
 import { Timeline } from "@/components/policy/timeline";
 import { CountryDetails } from "@/components/policy/country-details";
+import { Mode2Container } from "@/components/policy/mode2-container";
 import type { CountryCode } from "@/types/policy";
 
 const DEFAULT_COUNTRIES: CountryCode[] = [
@@ -56,7 +57,7 @@ export default function PolicyPage() {
               Policy Tracker
             </h1>
             <p className="text-xs text-muted-foreground">
-              Clean Hydrogen - 9 countries - 11 dimensions
+              Clean Hydrogen - 11 countries - 5 dimensions
             </p>
           </div>
         </div>
@@ -89,17 +90,11 @@ export default function PolicyPage() {
             selection={detailsSelection}
             onSelectionChange={setDetailsSelection}
           />
-
-          <div className="rounded-lg border border-dashed bg-card/30 p-12 text-center text-xs text-muted-foreground">
-            Mode 2 single-country deep dive - coming in S-P7
-          </div>
         </>
       )}
 
       {mode === "deep-dive" && (
-        <div className="rounded-lg border border-dashed bg-card/30 p-12 text-center text-xs text-muted-foreground">
-          Single-country deep dive - coming in S-P7
-        </div>
+        <Mode2Container initialCountry={highlightedCountry ?? "KR"} />
       )}
     </div>
   );
