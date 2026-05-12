@@ -1,38 +1,16 @@
-// Type definitions for Policy Tracker.
-// Designed to support future expansion: renewable energy and carbon policies.
+﻿// Policy Tracker — type definitions.
 
 export type CountryCode =
-  | "KR"
-  | "US"
-  | "EU"
-  | "DE"
-  | "FR"
-  | "UK"
-  | "JP"
-  | "AU"
-  | "CA"
-  | "SA"
-  | "CN";
+  | "KR" | "US" | "EU" | "DE" | "FR" | "UK"
+  | "JP" | "AU" | "CA" | "SA" | "CN";
 
 export type PolicyCategory = "hydrogen" | "renewable" | "carbon";
 
 export type PolicyType =
-  | "PTC" // Production Tax Credit
-  | "ITC" // Investment Tax Credit
-  | "Grant"
-  | "CfD" // Contract for Difference
-  | "Quota"
-  | "Premium"
-  | "Quota+Premium"
-  | "Quota+CfD"
-  | "Hybrid";
+  | "PTC" | "ITC" | "CfD" | "Quota" | "Quota+Premium"
+  | "Grant" | "Hybrid" | "Tax credit";
 
-export type PolicyStatus =
-  | "active"
-  | "pending"
-  | "proposed"
-  | "partial"
-  | "expired";
+export type PolicyStatus = "active" | "partial" | "pending" | "proposed" | "expired";
 
 export type Sector =
   | "industry"
@@ -44,7 +22,6 @@ export type Sector =
 
 export type StabilityLevel = "high" | "medium" | "low";
 
-// Policy milestone for timeline visualization
 export type MilestoneType = "announced" | "effective" | "review" | "end";
 
 export type PolicyMilestone = {
@@ -53,14 +30,12 @@ export type PolicyMilestone = {
   label?: string;
 };
 
-// IRA-style tier structure (optional, for detailed incentive breakdown)
 export type PolicyTier = {
   tierName: string;
   incentiveValue: string;
   condition: string;
 };
 
-// Score for heatmap (1-5 per dimension)
 export type AttractivenessScore = {
   incentive: number;
   stability: number;
@@ -69,73 +44,83 @@ export type AttractivenessScore = {
   stack: number;
 };
 
-// AI analysis bullets for radar chart
 export type AIAnalysis = {
-  highlights: string[]; // 2-4 bullets
+  highlights: string[];
 };
 
 // Country-level aggregated attractiveness assessment.
-// Represents how attractive the country's overall policy environment is
-// for clean hydrogen, evaluated holistically across all its policies.
 export type CountryAttractiveness = {
   country: CountryCode;
   scores: AttractivenessScore;
   aiAnalysis: AIAnalysis;
 };
 
-// Main Policy entity
+// National-level framework (hydrogen law, strategy, roadmap).
+// Distinct from individual policies — represents the top-level vision.
+export type NationalFramework = {
+  country: CountryCode;
+  name: string;
+  nameKo?: string;
+  enactedYear: number;
+  latestUpdateYear?: number;
+  category: "law" | "strategy" | "roadmap" | "sub-strategy";
+  summary: string;
+  keyTargets: string[];
+  scope: string;
+  status: "in-force" | "under-revision" | "draft";
+  officialSourceUrl?: string;
+  notes?: string;
+};
+
 export type Policy = {
   id: string;
   country: CountryCode;
   category: PolicyCategory;
-  name: string; // e.g. "IRA 45V"
-  fullName: string; // e.g. "Inflation Reduction Act Section 45V Production Tax Credit"
-
-  // Core 7 dimensions
-  type: PolicyType;
-  incentiveSize: string; // human-readable, e.g. "up to $3.00/kg"
-  incentiveValueUsdPerKg?: number; // numeric value for sorting, optional
+  name: string;
+  fullName: string;
+  type: PolicyType | string;
+  incentiveSize: string;
+  incentiveValueUsdPerKg?: number;
   eligibility: string;
   sectors: Sector[];
   startYear: number;
   endYear: number;
   budget: string;
   status: PolicyStatus;
-
-  // Enhancement 2
   stackable: boolean;
   stackableNote?: string;
   stability: StabilityLevel;
   stabilityNote?: string;
-
-  // Detail dimensions (your additions)
   tierStructure?: PolicyTier[];
   reviewCycle?: string;
-
-  // Visualization data
   scores: AttractivenessScore;
   aiAnalysis: AIAnalysis;
   milestones: PolicyMilestone[];
-
-  // External links
   officialSourceUrl?: string;
   googleNewsQuery?: string;
   reutersQuery?: string;
 };
 
-// Country metadata for selector and display
 export type CountryInfo = {
   code: CountryCode;
   name: string;
-  flag: string; // emoji
-  parentCode?: CountryCode; // e.g. DE's parent is EU
+  flag: string;
+  parentCode?: CountryCode;
   isSubRegion?: boolean;
 };
 
-// Theme card data
 export type PolicyTheme = {
-  countries: CountryCode[]; // exact match required
+  countries: string[];
   labelEn: string;
   labelKo: string;
   analysisKo: string;
+};
+
+// Scoring methodology for tooltips and Methodology section.
+export type ScoringDimensionMeta = {
+  key: keyof AttractivenessScore;
+  shortLabel: string;
+  fullLabel: string;
+  definition: string;
+  scaleDescription: string[];
 };
