@@ -764,6 +764,8 @@ export const POLICIES: Policy[] = [
 
 // ============================================
 // 5) Country-level aggregated attractiveness (11 countries)
+// Includes dimensionAnalysis - per-dimension narrative explaining why each
+// country scored as it did (2-3 bullet sentences each).
 // ============================================
 
 export const COUNTRY_ATTRACTIVENESS: CountryAttractiveness[] = [
@@ -777,6 +779,33 @@ export const COUNTRY_ATTRACTIVENESS: CountryAttractiveness[] = [
         "Limited stackability - primarily one-track CHPS mechanism with R&D grants",
       ],
     },
+    dimensionAnalysis: {
+      incentive: [
+        "CHPS premium auction delivers about 650 KRW/kg (~$0.50/kg) - below $1/kg equivalent threshold",
+        "Premium auction format inherently caps maximum incentive size to maintain budget discipline",
+        "No demand-side per-kg subsidy comparable to PTC or CfD strike prices",
+      ],
+      stability: [
+        "Hydrogen Law (2020) provides the strongest legal anchor among all surveyed countries",
+        "Bipartisan support unusual in Korean energy policy enhances longevity",
+        "5-year master plan structure mandated by law ensures policy continuity beyond election cycles",
+      ],
+      scope: [
+        "CHPS focuses on power and industry sectors, omitting transport and broader applications",
+        "Hydrogen Law itself is economy-wide but specific incentive instrument is sector-limited",
+        "Transport-related incentives operate via separate FCEV subsidy schemes",
+      ],
+      access: [
+        "Equal treatment for foreign developers in CHPS auctions without nationality restrictions",
+        "Active foreign partnership promotion via H2 Cluster designations (Ulsan, etc.)",
+        "However, certification process favors locally established supply chain participants in practice",
+      ],
+      stack: [
+        "Primary stack: CHPS auction + R&D grants - limited additional layering",
+        "Lacks investment-stage incentive (no ITC equivalent) to combine with production-stage CHPS",
+        "Provincial top-ups exist but small relative to federal-state stacking in other jurisdictions",
+      ],
+    },
   },
   {
     country: "US",
@@ -786,6 +815,33 @@ export const COUNTRY_ATTRACTIVENESS: CountryAttractiveness[] = [
         "Highest combined incentive intensity globally - IRA 45V Tier 1 plus DOE H2 Hubs plus state-level support",
         "Medium stability - Strategy and Roadmap are guidance, not legislation; administration change creates risk",
         "Highest stackability with 5+ policies combinable (IRA, ITC, DOE Hubs, state, EPA)",
+      ],
+    },
+    dimensionAnalysis: {
+      incentive: [
+        "IRA 45V Tier 1 delivers $3.00/kg - highest per-kg subsidy in any major economy",
+        "Tier 1 incentive alone exceeds 2025 spot green H2 LCOH estimates, enabling net-negative production cost",
+        "Stackable additional credits (ITC, state, DOE Hubs) push effective incentive above $4/kg in optimal cases",
+      ],
+      stability: [
+        "Strategy and Roadmap are executive guidance documents - not legislation - creating reinterpretation risk",
+        "2024-2025 Treasury guidance shifts on three-pillar test illustrate administration-driven volatility",
+        "45V itself is statute (IRA passed Congress) but operational implementation depends on regulatory discretion",
+      ],
+      scope: [
+        "IRA 45V applies economy-wide without sector restrictions, covering industry, transport, power, refining",
+        "DOE Hubs explicitly fund cross-sector regional infrastructure",
+        "Lacks dedicated maritime or aviation fuel mechanism - falls short of full economy-wide coverage",
+      ],
+      access: [
+        "Domestic content provisions in IRA 45V favor US-built components but do not exclude foreign developers",
+        "OFAC and CFIUS reviews can complicate certain foreign-controlled investments",
+        "Korean and European developers have active project pipelines under 45V framework",
+      ],
+      stack: [
+        "Five-plus policies combinable: IRA 45V + ITC + BIL DOE Hubs + state PTC + EPA classification benefits",
+        "Stack synergy explicitly designed into IRA architecture - 45V and ITC stackable on different project phases",
+        "California, Texas, New York state-level credits add second layer; effective stack reaches 5-7 policies",
       ],
     },
   },
@@ -799,6 +855,33 @@ export const COUNTRY_ATTRACTIVENESS: CountryAttractiveness[] = [
         "Strictest CI methodology globally (well-to-wheel)",
       ],
     },
+    dimensionAnalysis: {
+      incentive: [
+        "Hydrogen Bank auction strike prices (~EUR 0.37-0.48/kg in 2024) understate true incentive value",
+        "Combined with implicit CBAM-driven premium and member-state CfD layers, total incentive approaches $3/kg equivalent",
+        "Indirect demand creation via RED III quota effectively forces willingness-to-pay above $4/kg in industrial offtake",
+      ],
+      stability: [
+        "RED III is a directive with binding legal force on all 27 member states until 2030",
+        "EU directives extremely difficult to repeal - require qualified majority in Council plus Parliament agreement",
+        "EU Hydrogen Strategy is policy framework but RED III, CBAM, Innovation Fund create durable institutional structure",
+      ],
+      scope: [
+        "Coverage includes industry (42% RFNBO mandate), transport (RFNBO sub-targets), power (state aid frameworks), maritime (FuelEU)",
+        "CBAM extends scope to imports, creating economy-wide effect including non-EU producers",
+        "Comprehensive sectoral coverage exceeds any single national policy framework",
+      ],
+      access: [
+        "Single Market rules guarantee non-discriminatory access to RFNBO-certified hydrogen across all 27 members",
+        "Hydrogen Bank auctions explicitly designed for international supply (REPowerEU 10 Mt import target)",
+        "Bureaucratic complexity (RFNBO certification, member-state transposition) raises de facto barriers",
+      ],
+      stack: [
+        "Stackable: Hydrogen Bank CfD + RED III demand + national CfDs + Innovation Fund + CBAM uplift",
+        "However, Hydrogen Bank not stackable with national CfDs - forces strategic choice between layers",
+        "Member states (DE, FR, ES) add national stack on top of EU framework, reaching 4-5 policies",
+      ],
+    },
   },
   {
     country: "DE",
@@ -808,6 +891,33 @@ export const COUNTRY_ATTRACTIVENESS: CountryAttractiveness[] = [
         "National Hydrogen Strategy (2020, updated 2023) plus EU framework provides dual-layer stability",
         "Most active EU member state - H2Global, IPCEI plus EU RED III creates highest stackability globally",
         "Strong industrial demand base (steel, chemicals) plus active import strategy",
+      ],
+    },
+    dimensionAnalysis: {
+      incentive: [
+        "H2Global double-auction mechanism delivers price-gap closure - effective subsidy varies but typically $2-3/kg",
+        "IPCEI Hydrogen provides additional EUR 8B in grants, complementing CfD mechanism",
+        "Hydrogen Core Network (EUR 19.7B) absorbs infrastructure costs that would otherwise be passed to producers",
+      ],
+      stability: [
+        "Dual-layer protection: national strategy plus EU RED III directive creates redundant legal foundation",
+        "Cross-party support unusual in German energy policy - bipartisan commitment beyond coalition cycles",
+        "15-year H2Global contract duration locks in supplier and buyer commitments beyond political cycles",
+      ],
+      scope: [
+        "Industrial decarbonization (steel via Thyssenkrupp, chemicals via BASF), transport, power, import infrastructure all covered",
+        "Hydrogen Core Network provides full transport infrastructure coverage from 2027",
+        "Aligned with EU RED III gives effective economy-wide coverage including aviation and maritime via FuelEU",
+      ],
+      access: [
+        "H2Global mechanism explicitly designed for international suppliers via Hintco intermediary",
+        "Active foreign investment promotion via 50-70% import strategy in National Hydrogen Strategy",
+        "Highest access score among surveyed countries due to import-focused policy design",
+      ],
+      stack: [
+        "Five-plus layers: EU Hydrogen Bank + RED III + national H2Global + IPCEI + Core Network funding",
+        "Each layer designed to be complementary rather than mutually exclusive",
+        "Highest stackability score globally; explicit synergy across federal, state, EU jurisdictions",
       ],
     },
   },
@@ -821,6 +931,33 @@ export const COUNTRY_ATTRACTIVENESS: CountryAttractiveness[] = [
         "EUR 9B national commitment plus EU programs stackable",
       ],
     },
+    dimensionAnalysis: {
+      incentive: [
+        "EUR 9B over 10 years equates to about $1.00-2.00/kg average across deployment cycle",
+        "Lower headline incentive than Germany H2Global or UK HBM due to lower baseline LCOH from nuclear electrolysis",
+        "Indirect cost advantage from nuclear feedstock partially substitutes for explicit per-kg subsidy",
+      ],
+      stability: [
+        "France 2030 plan plus EU RED III provides dual-layer protection similar to Germany",
+        "Bipartisan support for nuclear ensures hydrogen-nuclear linkage survives political transitions",
+        "Multi-year budget commitment (EUR 9B) structured to outlast presidential terms",
+      ],
+      scope: [
+        "Industrial decarbonization (chemicals, refining) and heavy mobility (trucks, trains) primary focus",
+        "Nuclear electrolysis pathway adds power-sector linkage absent in renewable-only frameworks",
+        "Limited maritime and aviation coverage relative to EU framework",
+      ],
+      access: [
+        "Equal treatment for foreign developers in France 2030 tenders",
+        "EU Hydrogen Bank participation gives French projects same access as German, Spanish counterparts",
+        "Localization preferences favor French champions (Air Liquide, Lhyfe, EDF) in practice",
+      ],
+      stack: [
+        "Four-layer stack: France 2030 + EU Hydrogen Bank + IPCEI + RED III",
+        "Nuclear-related state aid (EDF Hynamics) potentially compounds with hydrogen incentives",
+        "Stackability constrained by EU state aid review for cumulative aid intensity",
+      ],
+    },
   },
   {
     country: "UK",
@@ -830,6 +967,33 @@ export const COUNTRY_ATTRACTIVENESS: CountryAttractiveness[] = [
         "UK Hydrogen Strategy (2021) plus Hydrogen Business Model provides stable framework",
         "Highest per-kg CfD strike reflecting UK premium gas markets",
         "Independent from EU - twin-track (green + blue) approach",
+      ],
+    },
+    dimensionAnalysis: {
+      incentive: [
+        "HBM strike price of GBP 9.50/kg average (~$12/kg in early rounds) is the highest per-kg subsidy globally",
+        "Premium reflects UK's higher industrial gas price baseline and gap-closing nature of CfD",
+        "Strike prices declining in HAR2 (~GBP 7.40/kg) as project pipeline matures",
+      ],
+      stability: [
+        "UK Hydrogen Strategy is policy framework (not law) but underpinned by Low Carbon Hydrogen Standard regulations",
+        "15-year HBM contract duration provides project-level certainty independent of policy changes",
+        "Twin-track (green plus blue) approach broadens political constituency, enhances resilience",
+      ],
+      scope: [
+        "Industry (HBM CfD) and power (separate CCUS framework) primary coverage",
+        "Transport and aviation handled by separate sub-strategies - not unified",
+        "Maritime and heating sectors not yet covered by dedicated hydrogen instruments",
+      ],
+      access: [
+        "Post-Brexit independent design allows direct foreign developer participation without EU certification overhead",
+        "HBM CfD eligibility based on Low Carbon Hydrogen Standard, not nationality",
+        "However, UK domestic content guidance increasingly favors UK supply chain in HAR3",
+      ],
+      stack: [
+        "Stack options: HBM + Net Zero Hydrogen Fund + state aid (within UK rules) + Track 2 CCUS",
+        "Lacks EU-level stacking; no equivalent to RED III demand quota or CBAM",
+        "Three-policy stack typical, less than EU member states' four-to-five layer combinations",
       ],
     },
   },
@@ -843,6 +1007,33 @@ export const COUNTRY_ATTRACTIVENESS: CountryAttractiveness[] = [
         "Designed primarily for imports - favors offshore suppliers over domestic",
       ],
     },
+    dimensionAnalysis: {
+      incentive: [
+        "Japanese CfD targets JPY 30/Nm3 (~$2.70/kg) by 2030 - within $1-2/kg incentive band when netted against current import cost",
+        "Effective subsidy depends on imported H2/NH3 LCOH from Australia, Middle East - typically $2-3/kg net",
+        "JPY 3 trillion 15-year budget gives unprecedented predictability for supplier offtake agreements",
+      ],
+      stability: [
+        "World's first national hydrogen strategy (2017) - longest continuous policy track record",
+        "Hydrogen Society Promotion Act (2024) provides legislative basis for CfD - elevates stability beyond guidance level",
+        "15-year contract duration is longest among surveyed CfD mechanisms globally",
+      ],
+      scope: [
+        "Power generation (ammonia co-firing, hydrogen turbines) and import infrastructure primary scope",
+        "Heavy mobility limited to fuel cell trucks - passenger FCEV market shrinking",
+        "Industrial decarbonization underweighted relative to EU and US frameworks",
+      ],
+      access: [
+        "CfD designed for foreign suppliers (Australia, UAE, Saudi) - high theoretical access",
+        "However, complex AZEC framework and bilateral negotiation requirements limit practical access for new entrants",
+        "Trading house intermediation (Mitsui, Mitsubishi, Sumitomo) effectively gatekeeps supply chains",
+      ],
+      stack: [
+        "Limited stack options: Hydrogen CfD + Green Innovation Fund + supply chain build-out grants",
+        "No production-stage equivalent stackable with CfD - one mechanism dominates",
+        "Lacks investment-stage incentive comparable to Canada Clean H2 ITC",
+      ],
+    },
   },
   {
     country: "AU",
@@ -852,6 +1043,33 @@ export const COUNTRY_ATTRACTIVENESS: CountryAttractiveness[] = [
         "National Hydrogen Strategy backed by bipartisan Future Made in Australia (A$22.7B)",
         "Production credit supports large-scale export-oriented projects",
         "Limited domestic demand - export focus may constrain stack opportunities",
+      ],
+    },
+    dimensionAnalysis: {
+      incentive: [
+        "Hydrogen Headstart delivers A$2/kg (~$1.30/kg USD) - falls in $1-2/kg incentive band",
+        "Future Made in Australia adds Hydrogen Production Tax Incentive of A$2/kg over 10 years from FY2027-28",
+        "Combined effective incentive approaches $2.50-3/kg with state-level top-ups in some jurisdictions",
+      ],
+      stability: [
+        "National Hydrogen Strategy (2019, updated 2024) plus Future Made in Australia legislation provides solid framework",
+        "Bipartisan support unusual in Australian energy policy - both major parties endorse hydrogen export strategy",
+        "Hydrogen Production Tax Incentive built into HPTI Act provides legislative basis beyond program-level commitments",
+      ],
+      scope: [
+        "Export production primary focus - domestic industrial decarbonization limited",
+        "FCEV deployment marginal; transport sector under-served relative to peers",
+        "Recent expansion to include maritime and steel decarbonization via Hydrogen Headstart amendments",
+      ],
+      access: [
+        "Open to foreign project sponsors - bilateral MOUs with Korea, Japan, Germany, EU active",
+        "Foreign Investment Review Board approval required for major projects but rarely blocking",
+        "Indigenous land title and environmental approvals can delay timeline but apply equally to domestic and foreign",
+      ],
+      stack: [
+        "Three-layer stack: Hydrogen Headstart + Hydrogen Production Tax Incentive + state schemes (WA, QLD)",
+        "ARENA grants and CEFC equity overlap with subsidy programs",
+        "Export-focused projects can additionally access offtake country incentives (e.g. EU Hydrogen Bank)",
       ],
     },
   },
@@ -865,6 +1083,33 @@ export const COUNTRY_ATTRACTIVENESS: CountryAttractiveness[] = [
         "Federal + provincial structure enables stacking across jurisdictions",
       ],
     },
+    dimensionAnalysis: {
+      incentive: [
+        "Clean H2 ITC delivers 15-40% of CAPEX as upfront tax credit - translates to about $1.50-2/kg over project life",
+        "Investment-stage delivery reduces project financing cost and risk premium relative to production-stage credits",
+        "Provincial top-ups (Quebec, Alberta) add 5-15% additional incentive in selected jurisdictions",
+      ],
+      stability: [
+        "Clean H2 ITC enacted via Bill C-59 in 2024 - statutory basis stronger than guidance documents",
+        "Federal-provincial coordination structure provides redundant policy anchoring",
+        "Hydrogen Strategy for Canada (2020) is framework document but ITC and provincial laws provide operational stability",
+      ],
+      scope: [
+        "Economy-wide application (industry, transport, power) without sector restrictions",
+        "Blue and green pathways both supported - twin-track approach similar to UK",
+        "Sectoral coverage exceeds peer countries due to CAPEX-based application",
+      ],
+      access: [
+        "Tax credit framework neutral to nationality - any Canadian-incorporated project entity eligible",
+        "Industrial investment promotion via Invest in Canada actively targets foreign developers",
+        "Provincial differences in permitting (Alberta fast-tracking vs Quebec lengthier processes) affect timeline",
+      ],
+      stack: [
+        "Federal ITC + provincial top-ups + Strategic Innovation Fund + CleanH2 Hub designations create four-layer stack",
+        "Clean Hydrogen ITC explicitly stackable with regional development incentives",
+        "Limited stackability with US 45V for cross-border projects due to mutual exclusivity rules",
+      ],
+    },
   },
   {
     country: "SA",
@@ -876,6 +1121,33 @@ export const COUNTRY_ATTRACTIVENESS: CountryAttractiveness[] = [
         "Limited stackability - one-off project deals rather than program-based",
       ],
     },
+    dimensionAnalysis: {
+      incentive: [
+        "No explicit per-kg subsidy mechanism - sovereign equity, offtake guarantees vary by project",
+        "Equivalent effective subsidy through low-cost equity and PIF backing estimated at $0.50-1/kg",
+        "Below explicit per-kg incentives in surveyed countries; reliance on cost-side competitiveness rather than subsidy",
+      ],
+      stability: [
+        "Vision 2030 hydrogen is sub-component of larger strategy, not standalone law",
+        "Sovereign discretion creates project-level continuity but legal-framework predictability is low",
+        "Lacks comprehensive hydrogen legislation comparable to Korean Hydrogen Law or Japanese Hydrogen Society Act",
+      ],
+      scope: [
+        "Single-sector focus on hydrogen export - lacks industrial, transport, power coverage in national framework",
+        "Domestic hydrogen demand effectively absent",
+        "Narrowest scope among surveyed countries; lowest score reflects mono-purpose framework",
+      ],
+      access: [
+        "Project access requires direct negotiation with PIF or sovereign-linked entities",
+        "Selected international partners welcomed (Air Products, ACWA Power, POSCO) but case-by-case",
+        "No rule-based access framework for foreign developers outside designated partnerships",
+      ],
+      stack: [
+        "Single-mechanism approach - mega-project equity/offtake bundle constitutes the entire support package",
+        "No domestic stackable instruments due to absence of broader policy framework",
+        "Lowest stack score reflects program-by-program rather than rule-based architecture",
+      ],
+    },
   },
   {
     country: "CN",
@@ -885,6 +1157,33 @@ export const COUNTRY_ATTRACTIVENESS: CountryAttractiveness[] = [
         "Hydrogen Plan (2022) from NDRC sets strategic frame but no standalone law",
         "Decentralized provincial implementation reduces predictability",
         "Industrial policy approach prioritizing domestic supply chain limits foreign access",
+      ],
+    },
+    dimensionAnalysis: {
+      incentive: [
+        "Provincial subsidies vary widely - Shandong (~RMB 20/kg ~ $2.80/kg) to provinces with no subsidy",
+        "National-level subsidy absent - effective per-kg incentive averages below $1/kg when weighted by national output",
+        "Indirect incentives via state-owned manufacturer cost reduction (40-60% cheaper electrolyzers) substitute for explicit subsidy",
+      ],
+      stability: [
+        "Hydrogen Plan 2021-2035 sets national-level strategic frame but lacks legislative basis",
+        "Provincial implementation creates execution uncertainty - Inner Mongolia mandate exceeds national targets while other provinces underperform",
+        "5-Year Plan integration provides medium-term continuity but vulnerable to provincial-level policy reversals",
+      ],
+      scope: [
+        "National plan covers production, distribution, and end-use across multiple sectors",
+        "Effective sectoral coverage limited by provincial implementation - typically 2-3 sectors per province",
+        "FCEV deployment via central government subsidies has been most consistent national-level instrument",
+      ],
+      access: [
+        "Foreign developer access effectively constrained by industrial policy and domestic supply chain mandates",
+        "Joint venture requirements and technology transfer expectations create de facto barriers",
+        "Lowest access score globally - reflects systematic preference for domestic champions",
+      ],
+      stack: [
+        "Stack typically combines: national FCEV subsidy + provincial production credit + state-owned enterprise priority access",
+        "No formal stackability framework - provincial schemes vary in compatibility",
+        "Limited stack score reflects program-by-program rather than rule-based architecture",
       ],
     },
   },

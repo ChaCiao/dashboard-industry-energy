@@ -48,15 +48,21 @@ export type AIAnalysis = {
   highlights: string[];
 };
 
-// Country-level aggregated attractiveness assessment.
+export type DimensionAnalysis = {
+  incentive?: string[];
+  stability?: string[];
+  scope?: string[];
+  access?: string[];
+  stack?: string[];
+};
+
 export type CountryAttractiveness = {
   country: CountryCode;
   scores: AttractivenessScore;
   aiAnalysis: AIAnalysis;
+  dimensionAnalysis?: DimensionAnalysis;
 };
 
-// National-level framework (hydrogen law, strategy, roadmap).
-// Distinct from individual policies — represents the top-level vision.
 export type NationalFramework = {
   country: CountryCode;
   name: string;
@@ -101,9 +107,6 @@ export type Policy = {
   reutersQuery?: string;
 };
 
-// Country metadata.
-// shortName: concise label for compact UI (heatmap rows, mode 2 selector, etc.)
-// Example: "United States" -> "U.S.", "Saudi Arabia" -> "Saudi Arabia"
 export type CountryInfo = {
   code: CountryCode;
   name: string;
@@ -120,7 +123,6 @@ export type PolicyTheme = {
   analysisKo: string;
 };
 
-// Scoring methodology for tooltips and Methodology section.
 export type ScoringDimensionMeta = {
   key: keyof AttractivenessScore;
   shortLabel: string;
@@ -133,8 +135,6 @@ export type ScoringDimensionMeta = {
 // Mode 2 (S-P7) — types for deep-dive sections
 // ============================================
 
-// Policy history event — country-level policy evolution over time.
-// Distinct from PolicyMilestone (per-policy) — represents national-level shifts.
 export type PolicyHistoryEventType =
   | "law"
   | "strategy"
@@ -156,10 +156,9 @@ export type PolicyHistoryEvent = {
   impact?: "high" | "medium" | "low";
 };
 
-// News & event feed entry.
 export type NewsEvent = {
   country: CountryCode;
-  date: string; // ISO format YYYY-MM-DD
+  date: string;
   title: string;
   summary: string;
   sourceName: string;
@@ -167,7 +166,7 @@ export type NewsEvent = {
   category: "policy" | "project" | "market" | "industry" | "international";
 };
 
-// Country player & project mapping.
+// (Player/Project types kept for future Market & Industry module)
 export type ValueChainSegment =
   | "production-green"
   | "production-blue"
@@ -186,7 +185,7 @@ export type CountryProject = {
   projectName: string;
   developer: string;
   segment: ValueChainSegment;
-  scaleNote?: string; // e.g. "600 t/day", "100 MW electrolyzer"
+  scaleNote?: string;
   targetYear?: number;
   status?: "operating" | "construction" | "FID" | "announced" | "feasibility";
   sourceUrl?: string;
@@ -196,14 +195,34 @@ export type CountryPlayer = {
   country: CountryCode;
   companyName: string;
   segment: ValueChainSegment;
-  positionNote: string; // 1-2 sentence positioning summary
+  positionNote: string;
   isDomestic?: boolean;
   sourceUrl?: string;
 };
 
-// Aggregated container for a single country's mapping section.
 export type CountryPlayers = {
   country: CountryCode;
   players: CountryPlayer[];
   projects: CountryProject[];
+};
+
+// ============================================
+// Policy Governance — Mode 2 final section
+// Captures the government agencies and bodies responsible for hydrogen policy
+// at lead, supporting, and implementing levels.
+// ============================================
+
+export type GovernanceAgency = {
+  shortName: string;       // e.g. "MOTIE", "BMWK"
+  fullName: string;        // e.g. "Ministry of Trade, Industry and Energy"
+  role: string;            // Concise description of responsibility
+  url?: string;            // Official website
+};
+
+export type PolicyGovernance = {
+  country: CountryCode;
+  leadAgency: GovernanceAgency;
+  supportingAgencies: GovernanceAgency[];
+  implementingBodies: GovernanceAgency[];
+  notes?: string;
 };
