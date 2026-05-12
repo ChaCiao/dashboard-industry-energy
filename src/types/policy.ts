@@ -34,7 +34,13 @@ export type PolicyStatus =
   | "partial"
   | "expired";
 
-export type Sector = "industry" | "transport" | "power" | "export" | "all";
+export type Sector =
+  | "industry"
+  | "transport"
+  | "power"
+  | "export"
+  | "import"
+  | "all";
 
 export type StabilityLevel = "high" | "medium" | "low";
 
@@ -66,6 +72,15 @@ export type AttractivenessScore = {
 // AI analysis bullets for radar chart
 export type AIAnalysis = {
   highlights: string[]; // 2-4 bullets
+};
+
+// Country-level aggregated attractiveness assessment.
+// Represents how attractive the country's overall policy environment is
+// for clean hydrogen, evaluated holistically across all its policies.
+export type CountryAttractiveness = {
+  country: CountryCode;
+  scores: AttractivenessScore;
+  aiAnalysis: AIAnalysis;
 };
 
 // Main Policy entity

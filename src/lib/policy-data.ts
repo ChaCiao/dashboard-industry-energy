@@ -1,8 +1,12 @@
 // Policy data for the Policy Tracker.
 // All data is MOCK / illustrative. Verify with official sources before publication.
-// Sources to verify: IEA Hydrogen Project Database, BNEF Policy Tracker, Hydrogen Council Insights.
 
-import type { Policy, CountryInfo, PolicyTheme } from "@/types/policy";
+import type {
+  Policy,
+  CountryInfo,
+  PolicyTheme,
+  CountryAttractiveness,
+} from "@/types/policy";
 
 // ============================================
 // 1) Country metadata
@@ -39,7 +43,6 @@ export const COUNTRIES: CountryInfo[] = [
 // ============================================
 
 export const POLICIES: Policy[] = [
-  // --- Korea: CHPS ---
   {
     id: "kr-chps",
     country: "KR",
@@ -78,8 +81,6 @@ export const POLICIES: Policy[] = [
     googleNewsQuery: "Korea CHPS clean hydrogen",
     reutersQuery: "Korea hydrogen policy CHPS",
   },
-
-  // --- US: IRA 45V ---
   {
     id: "us-ira45v",
     country: "US",
@@ -141,8 +142,6 @@ export const POLICIES: Policy[] = [
     googleNewsQuery: "IRA 45V hydrogen tax credit",
     reutersQuery: "IRA 45V hydrogen",
   },
-
-  // --- US: DOE H2 Hubs ---
   {
     id: "us-doe-hubs",
     country: "US",
@@ -176,8 +175,6 @@ export const POLICIES: Policy[] = [
     officialSourceUrl: "https://www.energy.gov/oced",
     googleNewsQuery: "DOE hydrogen hubs",
   },
-
-  // --- EU: RED III ---
   {
     id: "eu-red3",
     country: "EU",
@@ -212,8 +209,6 @@ export const POLICIES: Policy[] = [
     officialSourceUrl: "https://energy.ec.europa.eu",
     googleNewsQuery: "EU RED III renewable hydrogen",
   },
-
-  // --- EU: Hydrogen CfD ---
   {
     id: "eu-h2cfd",
     country: "EU",
@@ -249,8 +244,6 @@ export const POLICIES: Policy[] = [
     officialSourceUrl: "https://climate.ec.europa.eu",
     googleNewsQuery: "European Hydrogen Bank auction",
   },
-
-  // --- UK: Hydrogen Business Model ---
   {
     id: "uk-hbm",
     country: "UK",
@@ -284,8 +277,6 @@ export const POLICIES: Policy[] = [
     officialSourceUrl:
       "https://www.gov.uk/government/publications/hydrogen-business-model",
   },
-
-  // --- Japan: Hydrogen CfD ---
   {
     id: "jp-h2cfd",
     country: "JP",
@@ -295,7 +286,7 @@ export const POLICIES: Policy[] = [
     type: "CfD",
     incentiveSize: "Price-gap based",
     eligibility: "Long-term offtake agreements; ammonia, LH2, MCH carriers",
-    sectors: ["import", "power"] as any,
+    sectors: ["import", "power"],
     startYear: 2024,
     endYear: 2039,
     budget: "3 trillion JPY (15-year)",
@@ -316,8 +307,6 @@ export const POLICIES: Policy[] = [
       { year: 2039, type: "end" },
     ],
   },
-
-  // --- Australia: Hydrogen Headstart ---
   {
     id: "au-headstart",
     country: "AU",
@@ -349,8 +338,6 @@ export const POLICIES: Policy[] = [
       { year: 2034, type: "end" },
     ],
   },
-
-  // --- Canada: Clean Hydrogen ITC ---
   {
     id: "ca-itc",
     country: "CA",
@@ -381,8 +368,6 @@ export const POLICIES: Policy[] = [
       { year: 2034, type: "end" },
     ],
   },
-
-  // --- Saudi Arabia: Vision 2030 ---
   {
     id: "sa-vision2030",
     country: "SA",
@@ -412,8 +397,6 @@ export const POLICIES: Policy[] = [
       { year: 2030, type: "end" },
     ],
   },
-
-  // --- China: 14th 5-Year Plan ---
   {
     id: "cn-fyp14",
     country: "CN",
@@ -446,7 +429,135 @@ export const POLICIES: Policy[] = [
 ];
 
 // ============================================
-// 3) Policy themes — for theme card display
+// 3) Country-level aggregated attractiveness
+// ============================================
+
+export const COUNTRY_ATTRACTIVENESS: CountryAttractiveness[] = [
+  {
+    country: "KR",
+    scores: { incentive: 2, stability: 4, scope: 3, access: 4, stack: 3 },
+    aiAnalysis: {
+      highlights: [
+        "Moderate per-kg incentive size, but stable policy framework backed by 수소법 legislation reduces project risk",
+        "Strong domestic market access — clear sectoral demand mandates via CHPS in power generation",
+        "Limited stackability across central policies; primarily one-track CHPS mechanism with R&D grants",
+      ],
+    },
+  },
+  {
+    country: "US",
+    scores: { incentive: 5, stability: 3, scope: 4, access: 4, stack: 5 },
+    aiAnalysis: {
+      highlights: [
+        "Highest combined incentive intensity globally — IRA 45V Tier 1 plus DOE H2 Hubs plus state-level support",
+        "Medium stability — administration changes risk Treasury guidance reinterpretation on CI methodology",
+        "Strong stackability with PTC, ITC, DOE Hubs creates one of the most flexible policy environments",
+      ],
+    },
+  },
+  {
+    country: "EU",
+    scores: { incentive: 4, stability: 4, scope: 5, access: 4, stack: 4 },
+    aiAnalysis: {
+      highlights: [
+        "Largest combined incentive program — RED III mandatory quota plus Hydrogen Bank CfD plus CBAM",
+        "Highest policy stability via EU directive status; difficult to reverse, multi-decade horizon",
+        "Strictest CI methodology globally (well-to-wheel) — high access bar but high credibility",
+      ],
+    },
+  },
+  {
+    country: "UK",
+    scores: { incentive: 4, stability: 4, scope: 3, access: 4, stack: 3 },
+    aiAnalysis: {
+      highlights: [
+        "Highest per-kg CfD strike (£9.50/kg avg) reflecting UK's premium gas markets",
+        "Stable post-Brexit framework with 15-year contracts providing long-term revenue certainty",
+        "Narrower sectoral scope than EU — focused on industrial decarbonization and power",
+      ],
+    },
+  },
+  {
+    country: "JP",
+    scores: { incentive: 3, stability: 5, scope: 3, access: 3, stack: 2 },
+    aiAnalysis: {
+      highlights: [
+        "Largest single-policy budget (3 trillion JPY over 15 years) signals strong long-term commitment",
+        "Highest policy stability via cross-ministerial consensus and 15-year contract duration",
+        "Designed primarily for imports — favors offshore suppliers over domestic production",
+      ],
+    },
+  },
+  {
+    country: "AU",
+    scores: { incentive: 3, stability: 4, scope: 3, access: 3, stack: 3 },
+    aiAnalysis: {
+      highlights: [
+        "Production credit supports large-scale export-oriented projects but smaller budget than peers",
+        "Stable framework backed by bipartisan Future Made in Australia industrial policy",
+        "Limited number of projects supported — budget covers only 2-3 large projects",
+      ],
+    },
+  },
+  {
+    country: "CA",
+    scores: { incentive: 3, stability: 4, scope: 3, access: 4, stack: 3 },
+    aiAnalysis: {
+      highlights: [
+        "Investment-stage incentive complements production-stage policies elsewhere",
+        "Stable framework similar to IRA structure but uncapped tax-credit delivery reduces project risk",
+        "Lower headline rate than IRA 45V but CAPEX-based delivery helps with project financing",
+      ],
+    },
+  },
+  {
+    country: "SA",
+    scores: { incentive: 2, stability: 1, scope: 1, access: 1, stack: 1 },
+    aiAnalysis: {
+      highlights: [
+        "No explicit per-kg incentive mechanism — bilateral negotiation per strategic project",
+        "Low policy transparency despite strong state-backed support for NEOM and selected mega-projects",
+        "Reliance on sovereign commitment rather than rule-based framework limits open market access",
+      ],
+    },
+  },
+  {
+    country: "CN",
+    scores: { incentive: 2, stability: 1, scope: 3, access: 1, stack: 1 },
+    aiAnalysis: {
+      highlights: [
+        "Decentralized to provincial governments — Shandong, Inner Mongolia, Hebei most active but inconsistent",
+        "Lack of unified national framework reduces predictability for foreign investors",
+        "Industrial policy approach prioritizing domestic supply chain limits foreign access",
+      ],
+    },
+  },
+  {
+    country: "DE",
+    scores: { incentive: 4, stability: 4, scope: 4, access: 4, stack: 4 },
+    aiAnalysis: {
+      highlights: [
+        "Most active EU member state with H2Global, IPCEI, and additional national programs on top of EU RED III",
+        "Strong stackability between EU and German national programs",
+        "Industrial demand base (steel, chemicals) provides clear sectoral pull",
+      ],
+    },
+  },
+  {
+    country: "FR",
+    scores: { incentive: 3, stability: 4, scope: 3, access: 4, stack: 3 },
+    aiAnalysis: {
+      highlights: [
+        "EU RED III applies plus national hydrogen plan with €9B commitment by 2030",
+        "Nuclear-allowed for low-carbon hydrogen classification — differentiates from green-only policies",
+        "Strong access via established industrial clusters",
+      ],
+    },
+  },
+];
+
+// ============================================
+// 4) Policy themes — for theme card display
 // ============================================
 
 export const POLICY_THEMES: PolicyTheme[] = [
@@ -535,11 +646,10 @@ export const POLICY_THEMES: PolicyTheme[] = [
 ];
 
 // ============================================
-// 4) Helpers
+// 5) Helpers
 // ============================================
 
 export function findThemeForSelection(selected: string[]): PolicyTheme | null {
-  // Sort both arrays so order doesn't matter
   const sortedSelection = [...selected].sort();
 
   for (const theme of POLICY_THEMES) {
