@@ -1,10 +1,9 @@
 // Collapsible sidebar with grouped navigation.
-// Categories expand/collapse on click. The category containing the active page
-// is auto-expanded on mount.
+// The category containing the active page auto-opens. Users can toggle to override.
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ChevronRight, Flame } from "lucide-react";
@@ -20,18 +19,20 @@ export function Sidebar() {
     ),
   )?.id;
 
-  // Track which categories are open. By default only the active one is open.
-  const [openCategories, setOpenCategories] = useState<Set<string>>(new Set());
+  // Track categories the user has manually toggled (open or closed).
+  const [manuallyToggled, setManuallyToggled] = useState<Set<string>>(
+    new Set(),
+  );
 
-  // Initialize: open the active category on mount or when pathname changes
-  useEffect(() => {
-    if (activeCategoryId) {
-      setOpenCategories((prev) => new Set(prev).add(activeCategoryId));
-    }
-  }, [activeCategoryId]);
+  // A category is open if it's the active one XOR user toggled it.
+  const isOpen = (categoryId: string) => {
+    const isActive = categoryId === activeCategoryId;
+    const isToggled = manuallyToggled.has(categoryId);
+    return isActive ? !isToggled : isToggled;
+  };
 
   const toggleCategory = (categoryId: string) => {
-    setOpenCategories((prev) => {
+    setManuallyToggled((prev) => {
       const next = new Set(prev);
       if (next.has(categoryId)) {
         next.delete(categoryId);
@@ -56,7 +57,7 @@ export function Sidebar() {
       {/* Navigation */}
       <nav className="flex-1 overflow-y-auto px-2 py-3">
         {NAVIGATION.map((category) => {
-          const isOpen = openCategories.has(category.id);
+          const categoryOpen = isOpen(category.id);
           return (
             <div key={category.id} className="mb-1">
               <button
@@ -66,12 +67,12 @@ export function Sidebar() {
                 <span>{category.label}</span>
                 <ChevronRight
                   className={`h-3 w-3 transition-transform ${
-                    isOpen ? "rotate-90" : ""
+                    categoryOpen ? "rotate-90" : ""
                   }`}
                 />
               </button>
 
-              {isOpen && (
+              {categoryOpen && (
                 <ul className="mt-0.5 space-y-0.5">
                   {category.items.map((item) => {
                     const isActive =
